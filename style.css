@@ -1,0 +1,26 @@
+#page-title, #clock {
+    font-size: 40px;
+    text-align: center;
+
+    /* justify-content: center; */
+}
+
+.question-heading {
+    background-color: antiquewhite;
+    text-align: center;
+    padding: 13px;
+}
+
+p {
+    font-size: larger;
+}
+
+body {
+    text-align: center;
+}
+
+.navbar{
+    display: block;
+}
+
+
