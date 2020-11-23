@@ -16,37 +16,51 @@ var question = document.getElementById("question")
 var questionNumber = document.getElementById("question-number")
 console.log(questionNumber)
 
-// Counter to local storage
-
+// var multipleChoice = 
+document.getElementById("multiple-choice").setAttribute("style", "display:none")
 
 
 
 // var question = document.body.children[1].children[1].children[0];
 // console.log(question)
-
+// startButton() {
 function timer() {
+
     // Removes the start button after it is pushed
     document.getElementById("start-button").setAttribute("style", "display:none")
+
     // Start the timer at 60 and decrement 
-
-
-    for (var i = 60; i >= 0; i--) {
-
-        // Get the node inside "class"
-        var countDown = document.getElementById("clock")
-        var numbersCountDown = document.createTextNode(i);
-        countDown.appendChild(numbersCountDown);
-        // console.log(countDown)
-
-
+    // https://gist.github.com/adhithyan15/4350689
+    function countdown(seconds) {
+        var seconds = 61;
+        function decrementTimer() {
+            var counter = document.getElementById("clock");
+            seconds--;
+            counter.innerHTML = String(seconds);
+            if (seconds == -1) {
+                counter.innerHTML = "Time's up!";
+            }
+            else if (seconds > -1) {
+                setTimeout(decrementTimer, 1000);
+            } else {
+                if (seconds > 0) {
+                    countdown(seconds - 1);
+                }
+            }
+        }
+        decrementTimer();
     }
+    countdown(1);
+
+
+    // 
     question.innerText = "";
-    questionNumber.innerText ="";
+    questionNumber.innerText = "";
     questions();
 
 
 }
-
+// }
 
 
 var questionArray =
@@ -58,6 +72,7 @@ var questionArray =
     ]
 
 
+
 function questions() {
 
     var questionZeroTitle = document.createTextNode("Question 1")
@@ -65,6 +80,10 @@ function questions() {
 
     var question0 = document.createTextNode(questionArray[0])
     question.appendChild(question0);
+
+    document.getElementById("multiple-choice").setAttribute("style", "display:block")
+
+    
 
 
     // for (var i = 0; i < questionArray.length; i++)
@@ -95,12 +114,12 @@ function questions() {
 
 // Add listener even to start timer() when the button is pushed
 // Function timer() is triggeredin startButton
-function startButton() {
-    document.getElementById("start-button").addEventListener("click", timer);
+document.getElementById("start-button").addEventListener("click", timer);
 
-}
+
 
 
 
 // This starts running the program
-startButton()
+
+// Score is something like the seconds * the number of correct answers
