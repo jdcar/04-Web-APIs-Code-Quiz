@@ -32,31 +32,29 @@
         <!-- Multiple choice options -->
         <div id="multiple-choice">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
-                    checked>
-                <label class="form-check-label" for="exampleRadios1">
-                    Default radio
-                </label>
+                <input class="form-check-input" id="answer-One" type="radio" name="answer" value="option-1">
+                <label class="form-check-label" id="answer-1" for="answer-1"></label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                    Second default radio
-                </label>
+                <input class="form-check-input" id="answer-Two" type="radio" name="answer" value="option-2">
+                <label class="form-check-label" id="answer-2" for="answer-2"></label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
-                    checked>
-                <label class="form-check-label" for="exampleRadios1">
-                    Default radio
-                </label>
+                <input class="form-check-input" id="answer-Three" type="radio" name="answer" value="option-3">
+                <label class="form-check-label" id="answer-3" for="answer-3"></label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                    Second default radio
-                </label>
+                <input class="form-check-input" id="answer-Four" type="radio" name="answer" value="option-4">
+                <label class="form-check-label" id="answer-4" for="answer-4"></label>
             </div>
+            <div class="button">
+                <button id="submit-button" type="button" class="btn btn-primary btn-lg">Submit</button>
+                <div id="clock">
+                    <!-- Countdown timer will go here -->
+                </div>
+
+            </div>
+
         </div>
 
         <div class="button">
@@ -64,6 +62,7 @@
             <div id="clock">
                 <!-- Countdown timer will go here -->
             </div>
+            <div class="score"><span>Score: </span>0</div>
 
         </div>
     </div>
