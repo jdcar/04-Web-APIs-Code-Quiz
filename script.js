@@ -27,6 +27,7 @@ var multipleChoiceD = document.getElementById("answer-4")
 // Score is correctAnswers * time left
 var score = 0;
 
+var counter = document.getElementById("clock");
 
 function timer() {
 
@@ -118,6 +119,9 @@ function questions() {
         document.getElementById("multiple-choice").setAttribute("style", "display:none")
         var scoreCard = document.createTextNode("Score")
         questionNumber.appendChild(scoreCard)
+        document.getElementById("name-entry").setAttribute("style", "display:block")
+
+        
     }
     // document.getElementById("submit-button").addEventListener("click", submitButton)
 
@@ -137,23 +141,35 @@ function submitButton() {
     // var answerHTML = document.querySelector('input[name = "answer"]:checked').innerHTML
 
     var questionN = document.getElementById("question-number").innerText
-    console.log("This is " + questionN)
 
     // for (var m = 0; m < correct.length; m++)
     if (questionN == "Question 1" && answer == "option-4"){
-        console.log("correct")
-        
+        score = score + 10;
+
     } else if (questionN == "Question 2" && answer == "option-1"){
-        console.log("correct")
+        score = score + 10;
+
     } else if (questionN == "Question 3" && answer == "option-4"){
-        console.log("correct")
+        score = score + 10;
+
     } else if (questionN == "Question 4" && answer == "option-3"){
-        console.log("correct")
+        score = score + 10;
+    
     } else if (questionN == "Question 5" && answer == "option-2"){
-        console.log("correct")
-    } else {
-        console.log("Incorrect")
+        score = score + 10;
+      
+    } else {       
+        console.log(Number(counter.innerText) - 5)
+        counter1 = Number(counter.innerText)
+        counter1 = counter1 - 5
+        counter.innerHTML = counter1
     }
+
+    console.log(score, Number(counter.innerHTML))
+    
+    var keepScore = document.getElementById("score")
+
+    keepScore.innerText = String(score);
 
     question.innerText = "";
     questionNumber.innerText = "";
