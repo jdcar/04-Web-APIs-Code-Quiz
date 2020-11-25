@@ -121,9 +121,24 @@ function questions() {
         questionNumber.appendChild(scoreCard)
         document.getElementById("name-entry").setAttribute("style", "display:block")
 
+        // Save score button 
+        var scoreButton = document.getElementById("score-button")
         
+        function handleClick(event){
+            event.preventDefault()
+            // Save entry in form to local storage
+            // Add name and score to a leaderboard
+
+            var nameInput = document.querySelector(".form-control")
+            
+            console.log(nameInput.value + " " + score)
+          
+        }
+        scoreButton.addEventListener("click", handleClick)
+
+
+
     }
-    // document.getElementById("submit-button").addEventListener("click", submitButton)
 
     var submit = document.getElementById("submit-button");
 
@@ -164,13 +179,12 @@ function submitButton() {
         counter1 = counter1 - 5
         counter.innerHTML = counter1
     }
-
-    console.log(score, Number(counter.innerHTML))
     
     var keepScore = document.getElementById("score")
 
     keepScore.innerText = String(score);
 
+    // Clears question data and for next question
     question.innerText = "";
     questionNumber.innerText = "";
     multipleChoiceA.innerText = "";
@@ -183,7 +197,7 @@ function submitButton() {
 }
 
 // Program starts when Start Button is clicked and timer function begins 
-document.getElementById("start-button").addEventListener("click", timer);
+var startGame = document.getElementById("start-button").addEventListener("click", timer);
 
 
 
