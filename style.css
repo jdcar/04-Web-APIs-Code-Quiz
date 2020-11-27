@@ -5,7 +5,7 @@
     /* justify-content: center; */
 }
 
-.question-heading {
+.question-heading, .leader-board {
     background-color: antiquewhite;
     text-align: center;
     padding: 13px;
@@ -26,4 +26,12 @@ body {
 
 #name-entry {
     display: none;
+}
+
+.leader-board {
+    background-color: burlywood;
+}
+
+.leader-board h2{
+    font-size: 25px;
 }

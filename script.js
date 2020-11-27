@@ -10,6 +10,8 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score */
 
+
+
 // Element question is created so it can be replaced with each new question
 var question = document.getElementById("question")
 // Element question-number is created so it can be replaced with each new question
@@ -28,6 +30,7 @@ var multipleChoiceD = document.getElementById("answer-4")
 var score = 0;
 
 var counter = document.getElementById("clock");
+
 
 function timer() {
 
@@ -59,9 +62,7 @@ function timer() {
         }
         decrementTimer();
     }
-    countdown(1);
-
-
+    countdown();
     // 
     question.innerText = "";
     questionNumber.innerText = "";
@@ -91,13 +92,12 @@ var correct = [optionAMultipleChoice[0], optionBMultipleChoice[4], optionCMultip
 
 var i = 0;
 
-
 function questions() {
 
     if (i <= 4) {
         var questionZeroTitle = document.createTextNode("Question " + (i + 1))
         questionNumber.appendChild(questionZeroTitle)
-        
+
         var question0 = document.createTextNode(questionArray[i])
         question.appendChild(question0);
 
@@ -113,41 +113,52 @@ function questions() {
         var optionD = document.createTextNode(optionDMultipleChoice[i])
         multipleChoiceD.appendChild(optionD)
 
-        // console.log(questionZeroTitle)
     } else {
         alert("Game is over! Click OK to see your score.")
         document.getElementById("multiple-choice").setAttribute("style", "display:none")
         var scoreCard = document.createTextNode("Score")
         questionNumber.appendChild(scoreCard)
         document.getElementById("name-entry").setAttribute("style", "display:block")
-
-        // Save score button 
-        var scoreButton = document.getElementById("score-button")
-        
-        function handleClick(event){
-            event.preventDefault()
-            // Save entry in form to local storage
-            // Add name and score to a leaderboard
-
-            var nameInput = document.querySelector(".form-control")
-            
-            console.log(nameInput.value + " " + score)
-          
-        }
-        scoreButton.addEventListener("click", handleClick)
-
-
-
     }
-
-    var submit = document.getElementById("submit-button");
-
-    submit.addEventListener("click", submitButton, function
-        () {
-        // event.preventDefault();
-
-    });
 }
+
+var nameStorage = localStorage.getItem("name")
+var scoreStorage = localStorage.getItem("score")
+var userNameSpan = document.getElementById("name-saved")
+var userScoreSpan = document.getElementById("score-saved")
+
+function renderLastScoreInLeaderboard() {
+
+    var nameStorage = localStorage.getItem("name")
+    var scoreStorage = localStorage.getItem("score")
+    userNameSpan.innerText = nameStorage;
+    userScoreSpan.innerText = scoreStorage;
+    
+// Create p tags of the latest scores so it keeps adding
+// Restart the game somehow?
+}
+
+var scoreButton = document.getElementById("score-button")
+scoreButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    console.log("Score button event")
+
+    var nameInput = document.querySelector(".form-control")
+    localStorage.setItem("name", nameInput.value);
+    localStorage.setItem("score", score);
+    renderLastScoreInLeaderboard();
+});
+
+
+var submit = document.getElementById("submit-button");
+
+submit.addEventListener("click", submitButton, function
+    () {
+    // event.preventDefault();
+
+});
+// }
 // return question0;
 
 
@@ -158,33 +169,33 @@ function submitButton() {
     var questionN = document.getElementById("question-number").innerText
 
     // for (var m = 0; m < correct.length; m++)
-    if (questionN == "Question 1" && answer == "option-4"){
+    if (questionN == "Question 1" && answer == "option-4") {
         score = score + 10;
 
-    } else if (questionN == "Question 2" && answer == "option-1"){
+    } else if (questionN == "Question 2" && answer == "option-1") {
         score = score + 10;
 
-    } else if (questionN == "Question 3" && answer == "option-4"){
+    } else if (questionN == "Question 3" && answer == "option-4") {
         score = score + 10;
 
-    } else if (questionN == "Question 4" && answer == "option-3"){
+    } else if (questionN == "Question 4" && answer == "option-3") {
         score = score + 10;
-    
-    } else if (questionN == "Question 5" && answer == "option-2"){
+
+    } else if (questionN == "Question 5" && answer == "option-2") {
         score = score + 10;
-      
-    } else {       
+
+    } else {
         console.log(Number(counter.innerText) - 5)
         counter1 = Number(counter.innerText)
         counter1 = counter1 - 5
         counter.innerHTML = counter1
     }
-    
+
     var keepScore = document.getElementById("score")
 
     keepScore.innerText = String(score);
 
-    // Clears question data and for next question
+    // Clears question data for next question
     question.innerText = "";
     questionNumber.innerText = "";
     multipleChoiceA.innerText = "";
@@ -197,12 +208,18 @@ function submitButton() {
 }
 
 // Program starts when Start Button is clicked and timer function begins 
-var startGame = document.getElementById("start-button").addEventListener("click", timer);
+// var startGame = document.getElementById("start-button").addEventListener("click", timer);
+function startGame() {
 
+    document.getElementById("start-button").addEventListener("click", timer);
+}
+startGame();
+renderLastScoreInLeaderboard();
 
+// Restart game
 
+// function restartGame (event){
+//     event.preventDefault();
+//     document.getElementById
 
-
-// This starts running the program
-
-// Score is something like the seconds * the number of correct answers
+// }
