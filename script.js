@@ -26,11 +26,10 @@ var multipleChoiceC = document.getElementById("answer-3")
 var multipleChoiceD = document.getElementById("answer-4")
 
 
-// Score is correctAnswers * time left
 var score = 0;
 
 var counter = document.getElementById("clock");
-
+var seconds = 61;
 
 function timer() {
 
@@ -42,34 +41,46 @@ function timer() {
 
     // Start the timer at 60 and decrement 
     // https://gist.github.com/adhithyan15/4350689
-    function countdown(seconds) {
+    // function countdown(seconds) {
 
-        var seconds = 61;
-        function decrementTimer() {
-            var counter = document.getElementById("clock");
-            seconds--;
-            counter.innerHTML = String(seconds);
-            if (seconds == -1) {
-                counter.innerHTML = "Time's up!";
-            }
-            else if (seconds > -1) {
-                setTimeout(decrementTimer, 1000);
-            } else {
-                if (seconds > 0) {
-                    countdown(seconds - 1);
-                }
-            }
+    
+    function decrementTimer() {
+        var counter = document.getElementById("clock");
+        // var wrongAnswer = document.getElementById("wrong").innerText
+        // console.log(wrongAnswer)
+        seconds--;
+        
+        counter.innerHTML = String(seconds);
+        // console.log(seconds)
+        if (seconds == -1) {
+            counter.innerHTML = "Time's up!";
         }
-        decrementTimer();
+        else if (seconds > -1) {
+            setTimeout(decrementTimer, 1000);
+        }
+        
+         else {
+            if (seconds > 0) {
+                countdown(seconds - 1);
+            }
+
+        }
     }
-    countdown();
+    decrementTimer();
+    // }
+    // countdown();
     // 
     question.innerText = "";
     questionNumber.innerText = "";
     // Start button is click, timer begins, and questions begin to appear when calling function questions()
     questions();
 
+
+
+
+
 }
+
 
 var questionArray =
     ["This is question one",
@@ -131,11 +142,7 @@ function renderLastScoreInLeaderboard() {
 
     var nameStorage = localStorage.getItem("name")
     var scoreStorage = localStorage.getItem("score")
-    // userNameSpan.innerText = nameStorage;
-    // userScoreSpan.innerText = scoreStorage;
 
-    // Create p tags of the latest scores so it keeps adding
-    // Restart the game somehow?
     var leaderBoard = document.getElementById("entry")
 
     var item = document.createElement("div")
@@ -155,8 +162,8 @@ scoreButton.addEventListener("click", function (event) {
     localStorage.setItem("name", nameInput.value);
     localStorage.setItem("score", score);
     renderLastScoreInLeaderboard();
-    restart();
-    
+    // restart();
+
 });
 
 
@@ -192,10 +199,9 @@ function submitButton() {
         score = score + 10;
 
     } else {
-        console.log(Number(counter.innerText) - 5)
-        counter1 = Number(counter.innerText)
-        counter1 = counter1 - 5
-        counter.innerHTML = counter1
+
+        seconds -= 5;
+
     }
 
     var keepScore = document.getElementById("score")
@@ -214,12 +220,14 @@ function submitButton() {
 
 }
 
+
+
 // Program starts when Start Button is clicked and timer function begins 
 // var startGame = document.getElementById("start-button").addEventListener("click", timer);
 function startGame() {
-    
+
     document.getElementById("start-button").addEventListener("click", timer);
-    
+
 }
 
 startGame();
