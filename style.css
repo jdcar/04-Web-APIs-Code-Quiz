@@ -1,8 +1,18 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container{
+    margin: auto;
+
+}
 #page-title, #clock , #score{
     font-size: 40px;
     text-align: center;
 
-    /* justify-content: center; */
+    justify-content: center;
 }
 
 .question-heading, .leader-board {
@@ -26,12 +36,21 @@ body {
 
 #name-entry {
     display: none;
+    ;
 }
 
-.leader-board {
+#leader-board  {
     background-color: burlywood;
+    width: 250px;
+    border-style: ridge;
+    float: right;
+
 }
 
-.leader-board h2{
+#leader-board, h2{
     font-size: 25px;
+}
+
+.button {
+    margin: 25px;
 }

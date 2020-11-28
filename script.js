@@ -131,11 +131,18 @@ function renderLastScoreInLeaderboard() {
 
     var nameStorage = localStorage.getItem("name")
     var scoreStorage = localStorage.getItem("score")
-    userNameSpan.innerText = nameStorage;
-    userScoreSpan.innerText = scoreStorage;
-    
-// Create p tags of the latest scores so it keeps adding
-// Restart the game somehow?
+    // userNameSpan.innerText = nameStorage;
+    // userScoreSpan.innerText = scoreStorage;
+
+    // Create p tags of the latest scores so it keeps adding
+    // Restart the game somehow?
+    var leaderBoard = document.getElementById("entry")
+
+    var item = document.createElement("div")
+    item.textContent = nameStorage + "  :   " + scoreStorage;
+    leaderBoard.append(item)
+    startGame();
+
 }
 
 var scoreButton = document.getElementById("score-button")
@@ -148,23 +155,23 @@ scoreButton.addEventListener("click", function (event) {
     localStorage.setItem("name", nameInput.value);
     localStorage.setItem("score", score);
     renderLastScoreInLeaderboard();
+    restart();
+    
 });
 
 
 var submit = document.getElementById("submit-button");
 
 submit.addEventListener("click", submitButton, function
-    () {
-    // event.preventDefault();
+    (event) {
+    event.preventDefault();
 
 });
-// }
-// return question0;
 
 
 function submitButton() {
     var answer = document.querySelector('input[name = "answer"]:checked').value
-    // var answerHTML = document.querySelector('input[name = "answer"]:checked').innerHTML
+
 
     var questionN = document.getElementById("question-number").innerText
 
@@ -210,16 +217,11 @@ function submitButton() {
 // Program starts when Start Button is clicked and timer function begins 
 // var startGame = document.getElementById("start-button").addEventListener("click", timer);
 function startGame() {
-
+    
     document.getElementById("start-button").addEventListener("click", timer);
+    
 }
+
 startGame();
 renderLastScoreInLeaderboard();
 
-// Restart game
-
-// function restartGame (event){
-//     event.preventDefault();
-//     document.getElementById
-
-// }
