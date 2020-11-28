@@ -49,11 +49,14 @@ function timer() {
         // var wrongAnswer = document.getElementById("wrong").innerText
         // console.log(wrongAnswer)
         seconds--;
-        
         counter.innerHTML = String(seconds);
         // console.log(seconds)
         if (seconds == -1) {
             counter.innerHTML = "Time's up!";
+            document.getElementById("multiple-choice").setAttribute("style", "display:none")
+            document.getElementById("question").setAttribute("style", "display:none")
+            document.getElementById("name-entry").setAttribute("style", "display:block")
+
         }
         else if (seconds > -1) {
             setTimeout(decrementTimer, 1000);
@@ -133,20 +136,23 @@ function questions() {
     }
 }
 
-var nameStorage = localStorage.getItem("name")
-var scoreStorage = localStorage.getItem("score")
-var userNameSpan = document.getElementById("name-saved")
-var userScoreSpan = document.getElementById("score-saved")
+// var nameStorage = localStorage.getItem("name")
+// var scoreStorage = localStorage.getItem("score")
+// var userNameSpan = document.getElementById("name-saved")
+// var userScoreSpan = document.getElementById("score-saved")
 
 function renderLastScoreInLeaderboard() {
 
-    var nameStorage = localStorage.getItem("name")
-    var scoreStorage = localStorage.getItem("score")
-
+    var userStorage = JSON.parse(localStorage.getItem("user"))
     var leaderBoard = document.getElementById("entry")
-
     var item = document.createElement("div")
-    item.textContent = nameStorage + "  :   " + scoreStorage;
+    item.textContent = userStorage.name + " - " + userStorage.score;
+
+
+    // localStorage.setItem("nameArray", JSON.stringify(name));
+    // localStorage.setItem("scoreArray", JSON.stringify(score));
+
+
     leaderBoard.append(item)
     startGame();
 
@@ -159,8 +165,15 @@ scoreButton.addEventListener("click", function (event) {
     console.log("Score button event")
 
     var nameInput = document.querySelector(".form-control")
-    localStorage.setItem("name", nameInput.value);
-    localStorage.setItem("score", score);
+    // score is already a variable @ score
+
+    user = {
+        name : nameInput.value.trim(),
+        score : score
+    };
+    // localStorage.setItem("name", nameInput.value);
+    // localStorage.setItem("score", score);
+    localStorage.setItem("user", JSON.stringify(user));
     renderLastScoreInLeaderboard();
     // restart();
 
@@ -201,6 +214,7 @@ function submitButton() {
     } else {
 
         seconds -= 5;
+
 
     }
 

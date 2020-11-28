@@ -27,18 +27,20 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="row">
-            <div class="col-sm-3">
-                <p>Time</p>
+            <div class="col-sm-4">
+                <h2>Time</h2>
                 <div id="clock">
                     <p>60</p><!-- Countdown timer will go here -->
                 </div>
-                <p class="score">Score</p>
+                <h2 class="score">Score</p>
                 <div id="score">0</div>
+                <div id="wrong"></div>
 
             </div>
-            <div class="col-sm-6">
+            
+            <div class="col-sm-4">
                 <div class="button">
                     <button id="start-button" type="button" class="btn btn-primary btn-lg">Start quiz!</button>
                 </div>
@@ -57,6 +59,7 @@
                         </div>
                     </form>
                     <button id="score-button" type="button" class="btn btn-primary btn-lg">Save score!</button>
+                    
                     <button id="restart-button" type="button" onClick="window.location.reload();" class="btn btn-primary btn-lg">Restart!</button>
 
                 </div>
@@ -91,7 +94,7 @@
                 <!--  -->
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div id="leader-board">
                     <h2>Leader Board</h2>
                     <div id="entry"><span id="name-saved"></span><span id="score-saved"></span></div>

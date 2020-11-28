@@ -22,7 +22,7 @@
 }
 
 p {
-    font-size: larger;
+    font-size: 40px;
 }
 
 body {
@@ -36,13 +36,14 @@ body {
 
 #name-entry {
     display: none;
+    width: 100%;
     ;
 }
 
 #leader-board  {
-    background-color: burlywood;
+    /* background-color: burlywood; */
     width: 250px;
-    border-style: ridge;
+    /* border-style: ridge; */
     float: right;
 
 }
@@ -51,6 +52,25 @@ body {
     font-size: 25px;
 }
 
-.button {
-    margin: 25px;
+#restart-button, #score-button, #start-button, #submit-button {
+    margin-top: 25px;
+
 }
+.row {
+    margin-top: 15px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    
+    #page-title {
+        font-size: 25px;
+    }
+    #leader-board h2, #entry {
+        /* width: 150px; */
+        width: max-content;
+        margin-top: 15px;
+    }
+}
+
