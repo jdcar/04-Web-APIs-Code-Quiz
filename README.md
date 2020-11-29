@@ -28,12 +28,12 @@ A five question Javascript essentials quiz. Tested live with a Samsung Galaxy S9
 
 ## Screenshots
 
-PC_1.jpg
-PC_2.jpg
-PC_3.jpg
-phone_1.jpg
-phone_2.jpg
-phone_3.jpg
+https://github.com/jdcar/04-Web-APIs-Code-Quiz/blob/main/Screenshots/PC_1.JPG
+https://github.com/jdcar/04-Web-APIs-Code-Quiz/blob/main/Screenshots/PC_2.JPG
+https://github.com/jdcar/04-Web-APIs-Code-Quiz/blob/main/Screenshots/PC_3.jpg
+https://github.com/jdcar/04-Web-APIs-Code-Quiz/blob/main/Screenshots/phone_1.jpg
+https://github.com/jdcar/04-Web-APIs-Code-Quiz/blob/main/Screenshots/phone_2.jpg
+https://github.com/jdcar/04-Web-APIs-Code-Quiz/blob/main/Screenshots/phone_3.jpg
 
 ## Acknowledgements
 
