@@ -41,14 +41,14 @@ body {
 #name-entry {
     display: none;
     width: 100%;
-    ;
+    
 }
 
 #leader-board  {
     /* background-color: burlywood; */
-    width: 250px;
+    /* width: 250px; */
     /* border-style: ridge; */
-    float: right;
+    /* float: right; */
 
 }
 
@@ -68,16 +68,36 @@ body {
     font-size: 20px;
 }
 
+#time-box, #score-box {
+    border-style: outset ;
+    padding: 0px;
+    width: auto;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     
     #page-title {
         font-size: 25px;
     }
-    #leader-board h2, #entry {
-        /* width: 150px; */
-        width: max-content;
-        margin-top: 15px;
+
+    #time-box{
+        margin-left: 90px;
+        width: 190px;
+
     }
+
+    #leader-box {
+        margin-right: auto;
+        padding: 15px;
+
+    }
+    #score-box {
+        margin-left: 90px;
+        margin-top: 15px;
+        padding: 10px;
+
+    }
+
 }
 
