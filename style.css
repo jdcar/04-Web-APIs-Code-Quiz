@@ -1,3 +1,7 @@
+/* Jamie Carlstone
+December 3, 2020
+04-Web APIs */
+
 *,
 *::before,
 *::after {
@@ -60,6 +64,9 @@ body {
     margin-top: 15px;
 }
 
+#question {
+    font-size: 20px;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

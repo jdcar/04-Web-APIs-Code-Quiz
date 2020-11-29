@@ -25,9 +25,9 @@ var multipleChoiceB = document.getElementById("answer-2")
 var multipleChoiceC = document.getElementById("answer-3")
 var multipleChoiceD = document.getElementById("answer-4")
 
-
+// Starts the score at 0
 var score = 0;
-
+// Starts the counter at 60
 var counter = document.getElementById("clock");
 var seconds = 61;
 
@@ -43,30 +43,24 @@ function timer() {
     // https://gist.github.com/adhithyan15/4350689
     // function countdown(seconds) {
 
-    
+
     function decrementTimer() {
         var counter = document.getElementById("clock");
-        // var wrongAnswer = document.getElementById("wrong").innerText
-        // console.log(wrongAnswer)
         seconds--;
         counter.innerHTML = String(seconds);
-        // console.log(seconds)
         if (seconds == -1) {
             counter.innerHTML = "Time's up!";
             document.getElementById("multiple-choice").setAttribute("style", "display:none")
             document.getElementById("question").setAttribute("style", "display:none")
             document.getElementById("name-entry").setAttribute("style", "display:block")
-
         }
         else if (seconds > -1) {
             setTimeout(decrementTimer, 1000);
         }
-        
-         else {
+        else {
             if (seconds > 0) {
                 countdown(seconds - 1);
             }
-
         }
     }
     decrementTimer();
@@ -77,33 +71,28 @@ function timer() {
     questionNumber.innerText = "";
     // Start button is click, timer begins, and questions begin to appear when calling function questions()
     questions();
-
-
-
-
-
 }
-
-
+// Questions are listed in an array
 var questionArray =
-    ["This is question one",
-        "This is question two",
-        "This is question three",
-        "This is question four",
-        "This is question five"
+    ["Which for loop is formatted correctly?",
+        "What is the Document Object Model (DOM)?",
+        "How could you acces an HTML tag that looks like this?: <div id = 'start-button'>",
+        "How would you access 'dogs' in this array?: var animals = ['dogs', 'cats', 'birds', 'mice'];",
+        "What does API stand for?"
     ]
-
+// Multiple choice options are listed in arrays
 var optionAMultipleChoice =
-    ["1A - Incorrect", "2A - Correct", "3A - Incorrect", "4A - Incorrect", "5A - Incorrect"];
+    ["for (var i == 0; i < 10; i++) {...}", "A web API", "document.getElementByID('start-button')", "animals[1]", "Application Programming Index"];
 var optionBMultipleChoice =
-    ["1B - Incorrect", "2B - Incorrect", "3B - Incorrect", "4B - Incorrect", "5B - Correct"];
+    ["var (for i = 0; i < 10; i++) {...}", "A programming language", "document.querySelector('.start-button')", "dogs.[0]", "Application Programming Interface"];
 var optionCMultipleChoice =
-    ["1C - Incorrect", "2C - Incorrect", "3C - Incorrect", "4C - Correct", "5C - Incorrect"];
+    ["for (var i = 0, i < 10, i++) {...}", "The company that owns Javascript", "document.querySelector('start-button')", "animals[0]", "Array Program Interface"];
 var optionDMultipleChoice =
-    ["1D - Correct", "2D - Incorrect", "3D - Correct", "4D - Incorrect", "5D - Incorrect"];
-
+    ["for (var i = 0; i < 10; i++) {...}", "Media queries for iPhones", "document.getElementById('start-button')", "animals.1", "Array Programming Interface"];
+// Correct answers are listed in an array
 var correct = [optionAMultipleChoice[0], optionBMultipleChoice[4], optionCMultipleChoice[3], optionDMultipleChoice[0], optionDMultipleChoice[2]]
 
+// i represents the question number
 var i = 0;
 
 function questions() {
@@ -133,6 +122,9 @@ function questions() {
         var scoreCard = document.createTextNode("Score")
         questionNumber.appendChild(scoreCard)
         document.getElementById("name-entry").setAttribute("style", "display:block")
+        counter.setAttribute("style", "display:none")
+        var timeLabel = document.getElementById("time-label")
+        timeLabel.setAttribute("style", "display:none")
     }
 }
 
@@ -141,6 +133,7 @@ function questions() {
 // var userNameSpan = document.getElementById("name-saved")
 // var userScoreSpan = document.getElementById("score-saved")
 
+// Renders the latest score
 function renderLastScoreInLeaderboard() {
 
     var userStorage = JSON.parse(localStorage.getItem("user"))
@@ -149,30 +142,26 @@ function renderLastScoreInLeaderboard() {
     item.textContent = userStorage.name + " - " + userStorage.score;
 
 
-    // localStorage.setItem("nameArray", JSON.stringify(name));
-    // localStorage.setItem("scoreArray", JSON.stringify(score));
 
 
     leaderBoard.append(item)
-    startGame();
+    // startGame();
 
 }
-
+// scoreButton saves the score with the user initials
 var scoreButton = document.getElementById("score-button")
 scoreButton.addEventListener("click", function (event) {
     event.preventDefault();
 
-    console.log("Score button event")
-
+    // Add the name and score to the local storage
     var nameInput = document.querySelector(".form-control")
     // score is already a variable @ score
-
     user = {
-        name : nameInput.value.trim(),
-        score : score
+        name: nameInput.value.trim(),
+        score: score
     };
-    // localStorage.setItem("name", nameInput.value);
-    // localStorage.setItem("score", score);
+
+
     localStorage.setItem("user", JSON.stringify(user));
     renderLastScoreInLeaderboard();
     // restart();
@@ -188,14 +177,13 @@ submit.addEventListener("click", submitButton, function
 
 });
 
-
+// Submit button after selection is made
 function submitButton() {
     var answer = document.querySelector('input[name = "answer"]:checked').value
 
-
+    // Checks whether the correct answer was checked for each question
     var questionN = document.getElementById("question-number").innerText
 
-    // for (var m = 0; m < correct.length; m++)
     if (questionN == "Question 1" && answer == "option-4") {
         score = score + 10;
 
@@ -212,7 +200,7 @@ function submitButton() {
         score = score + 10;
 
     } else {
-
+        // Five seconds are docked if the answer is wrong
         seconds -= 5;
 
 
@@ -233,8 +221,6 @@ function submitButton() {
     questions();
 
 }
-
-
 
 // Program starts when Start Button is clicked and timer function begins 
 // var startGame = document.getElementById("start-button").addEventListener("click", timer);
