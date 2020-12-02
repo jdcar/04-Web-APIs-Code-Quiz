@@ -18,10 +18,11 @@ December 3, 2020
 </head>
 
 <body>
-
+<!-- Header title -->
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1" id="page-title">Javascript Fundamentals Quiz</span>
     </nav>
+    <!-- Question numbers -->
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -31,7 +32,7 @@ December 3, 2020
                 </div>
             </div>
         </div>
-
+<!-- Time and score left sign box -->
         <div class="row">
             <div id="time-box" class="col-sm-3">
                 <h2 id="time-label">Time</h2>
@@ -43,16 +44,14 @@ December 3, 2020
                     <div id="wrong"></div>
 
             </div>
-
+<!-- Start quiz middle box-->
             <div class="col-sm-6">
                 <div class="button">
                     <button id="start-button" type="button" class="btn btn-primary btn-lg">Start quiz!</button>
                 </div>
-                <!-- <div> -->
                 <p id="question"></p>
-                <!-- </div> -->
 
-
+<!-- Name entry only appears at end of quiz -->
                 <div id="name-entry">
                     <form>
                         <div class="row">
@@ -66,10 +65,8 @@ December 3, 2020
 
                     <button id="restart-button" type="button" onClick="window.location.reload();"
                         class="btn btn-primary btn-lg">Restart!</button>
-
                 </div>
-
-                <!--  -->
+                <!-- Multiple choice radios -->
                 <div id="multiple-choice">
                     <div class="form-check">
                         <input class="form-check-input" id="answer-One" type="radio" name="answer" value="option-1">
@@ -92,48 +89,18 @@ December 3, 2020
                         <div id="clock">
                             <!-- Countdown timer will go here -->
                         </div>
-
                     </div>
                 </div>
-
-                <!--  -->
             </div>
-
+<!-- Right side box -->
             <div id="score-box" class="col-sm-3">
                 <h2 id="leader-board">Score Board</h2>
-                <!-- <> -->
                 <div>
                     <p id="entry"><span id="name-saved"></span><span id="score-saved"></span></p>
-                    <!-- </div> -->
                 </div>
             </div>
-
-
-                <!-- <div id="time-box" class="col-sm-3">
-                <h2 id = "time-label">Time</h2>
-                <div id="clock">
-                    <p>60</p><! Countdown timer will go here -->
-                <!-- </div> -->
-                <!-- <h2 class="score">Score</p>
-            <div id="score">0</div>
-            <div id="wrong"></div> -->
-
         </div>
-
-
-
     </div>
-    <!-- Multiple choice options -->
-
-    <!-- <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-
-
-                 </div> -->
-    <!-- </div>
-    </div>
-    </div> -->
 
     <!-- Linking to  -->
     <script src="./script.js"></script>

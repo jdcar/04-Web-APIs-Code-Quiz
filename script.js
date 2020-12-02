@@ -33,7 +33,6 @@ function timer() {
     // https://gist.github.com/adhithyan15/4350689
     // function countdown(seconds) {
 
-
     function decrementTimer() {
         var counter = document.getElementById("clock");
         seconds--;
@@ -118,26 +117,29 @@ function questions() {
     }
 }
 
-// var nameStorage = localStorage.getItem("name")
-// var scoreStorage = localStorage.getItem("score")
-// var userNameSpan = document.getElementById("name-saved")
-// var userScoreSpan = document.getElementById("score-saved")
-
 // Renders the latest score
 function renderLastScoreInLeaderboard() {
 
+
+
     var userStorage = JSON.parse(localStorage.getItem("user"))
-    var leaderBoard = document.getElementById("entry")
-    var item = document.createElement("div")
-    item.textContent = userStorage.name + " - " + userStorage.score;
 
-    leaderBoard.append(item)
 
+    if (userStorage) {
+
+        var leaderBoard = document.getElementById("entry")
+        var item = document.createElement("div")
+        item.textContent = userStorage.name + " - " + userStorage.score;
+
+        leaderBoard.append(item)
+    }
 }
 // scoreButton saves the score with the user initials
 var scoreButton = document.getElementById("score-button")
 scoreButton.addEventListener("click", function (event) {
     event.preventDefault();
+
+
 
     // Add the name and score to the local storage
     var nameInput = document.querySelector(".form-control")
@@ -147,10 +149,8 @@ scoreButton.addEventListener("click", function (event) {
         score: score
     };
 
-
     localStorage.setItem("user", JSON.stringify(user));
     renderLastScoreInLeaderboard();
-    // restart();
 
 });
 
